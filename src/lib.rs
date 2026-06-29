@@ -73,7 +73,7 @@ impl AsyncWriteBuf {
         }
     }
 
-    pub fn set_data(&mut self, data: &[u8]) {
+    pub fn fill(&mut self, data: &[u8]) {
         self.buf = data.into();
         self.pos = 0;
         self.capacity = data.len();
@@ -91,7 +91,7 @@ impl AsyncWriteBuf {
 impl From<&[u8]> for AsyncWriteBuf {
     fn from(value: &[u8]) -> Self {
         let mut buf = Self::new();
-        buf.set_data(&value);
+        buf.fill(&value);
         buf
     }
 }

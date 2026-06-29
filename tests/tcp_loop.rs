@@ -119,8 +119,7 @@ fn start_client() -> anyhow::Result<()> {
     let mut stream = TcpStream::connect(SocketAddr::new(
         "127.0.0.1".parse().unwrap(),
         *SERVER_PORT.wait(),
-    ))
-    .expect("failed to start test client");
+    ))?;
     printer.done();
 
     printer.start("Sending 1");

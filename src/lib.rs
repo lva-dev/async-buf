@@ -27,7 +27,7 @@ pub trait AsyncRead
 where
     Self: Read,
 {
-    fn read_async<'de>(&mut self, dst: &'de mut AsyncReadBuf) -> io::Result<bool> {
+    fn read_async(&mut self, dst: &mut AsyncReadBuf) -> io::Result<bool> {
         let len = dst.buf.len();
         let capacity = dst.capacity;
         let buf_slice = unsafe {
